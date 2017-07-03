@@ -66,3 +66,4 @@ This boilerplate comes from glueing together a collection of post on the interne
 
 * [https://modess.io/continuous-integration-for-laravel-with-jenkins-and-git/](https://modess.io/continuous-integration-for-laravel-with-jenkins-and-git/)
 * [http://chris.schalenborgh.be/2013/04/05/deploy-php-projects-jenkins-os/](http://chris.schalenborgh.be/2013/04/05/deploy-php-projects-jenkins-os/)
+

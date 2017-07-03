@@ -11,7 +11,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/var/www/laravel</url>
+        <url>/home/faten/lab/laravel/test</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
