@@ -15,7 +15,7 @@ class HelloworldController extends Controller
      */
     public function __construct()
     {
-        $this->message = "Hey, you've made a hello world controller view in Laravel 5!";
+        $this->message = "Hey, you've made a hello world controller view in Laravel 5 ;)";
     }
 
     /**
