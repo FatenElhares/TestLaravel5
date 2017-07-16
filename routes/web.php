@@ -16,3 +16,4 @@
 //    return view('helloworld');
 //});
 Route::get('/helloworld', 'HelloworldController@index');
+Route::get('/Administrateurcreatestage', 'Administrateur@createstage');

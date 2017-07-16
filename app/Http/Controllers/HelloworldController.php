@@ -23,10 +23,14 @@ class HelloworldController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function helloMetho(Request $request)
     {
         return view('helloworld', [
             'message' => $this->message
         ]);
+    }
+
+  public function  index(Request $request){
+        return response()->json(["message"=> "hello world"],200);
     }
 }
