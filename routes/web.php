@@ -17,3 +17,6 @@
 //});
 Route::get('/helloworld', 'HelloworldController@index');
 Route::get('/Administrateurcreatestage', 'Administrateur@createstage');
+Route::get('/AdminController', 'AdminController@StageManagement');
+Route::get('/EnseigController', 'EnseigController@StageManagement');
+Route::get('/EnseigController', 'EnseigController@CompetancesManagement');

@@ -20,7 +20,7 @@ class Stage extends Model
   public $timestamps = false;
 
 
-  public static function AddSpecialite($hopital,$service,$etudiant,$enseignant,$note, $Datedebut, $Datefin)
+  public static function AddStage($hopital,$service,$etudiant,$enseignant,$note, $Datedebut, $Datefin)
   {
 
   $newObj = new Stage;
@@ -35,4 +35,44 @@ class Stage extends Model
   $newObj->save();
 
   }
+
+
+  public static function DonnerNote($id, $note)
+  {
+  $Obj = new Stage;
+  $Obj = getStageById($id)
+  $Obj->note=$note;
+
+  $newObj->save();
+
+  }
+
+  public function Donnernote($id , $note) {
+  #  $stage = Stage::find($id);
+  #  $stage->where('note', $note)->update(array('image' => 'asdasd'));
+
+    $stage = Stage::find($id);
+
+if($stage) {
+    $stage->note = $note;
+    $stage->save();
+}
+return stage ;
+}
+
+
+  public static function getStageById($id) {
+    return DB::table('Stage')
+            ->select('Stage.*')
+            ->where('id_Stage',$id)
+            ->first();
+}
+
+
+public static function ListeStage($id) {
+    return DB::table('Stage')
+            ->select('Stage.*')
+            ->get();
+}
+
 }

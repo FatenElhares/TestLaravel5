@@ -15,7 +15,7 @@ use App\Service;
 use App\Specialite;
 use App\Stage;
 
-class HelloworldController extends Controller
+class EnseigController extends Controller
 {
 
     public $message;
@@ -34,33 +34,31 @@ class HelloworldController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function helloMetho(Request $request)
-    {
+    public function  StageManagement(Request $request){
 
-        return view('helloworld', [
-            'message' => $this->message
-        ]);
-    }
+      $Stage = Stage::all();
+      $result = [];
 
-  public function  index(Request $request){
-
-    $Competences = Competences::all();
-    $result = [];
-
-        $newNiveau = new Competences;
-    $newNiveau->ethique = 2;
-    $newNiveau->gestionnaire = 3;
-    $newNiveau->organisation = 4;
-    $newNiveau->collaboration = 5;
-    $newNiveau->professionnalisme = 6;
-    $newNiveau->id_Enseignant = 6;
+      $idstage=request->id;
+      $note=request->note;
+      $stage=DonnerNote($idstage, $note);
+      return response()->json(["message"=> $stage],200);
+      }
 
 
-    $newNiveau->save();
+      public function  CompetancesManagement(Request $request){
 
-    foreach ($Competences as $each) {
-        $result[] = $each;
-    }
-        return response()->json(["message"=> $result],200);
-    }
+        $etudiant=$request->idetudiant;
+
+        $Competences = Competences::all();
+        $result = [];
+
+        $new = new Competences;
+        $new::Create($etudiant,9,988,9,9,14);
+
+        foreach ($Competences as $each) {
+            $result[] = $each;
+        }
+            return response()->json(["message"=> $result],200);
+        }
 }

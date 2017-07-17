@@ -15,7 +15,7 @@ use App\Service;
 use App\Specialite;
 use App\Stage;
 
-class HelloworldController extends Controller
+class EtudiantController extends Controller
 {
 
     public $message;
@@ -44,22 +44,7 @@ class HelloworldController extends Controller
 
   public function  index(Request $request){
 
-    $Competences = Competences::all();
-    $result = [];
 
-        $newNiveau = new Competences;
-    $newNiveau->ethique = 2;
-    $newNiveau->gestionnaire = 3;
-    $newNiveau->organisation = 4;
-    $newNiveau->collaboration = 5;
-    $newNiveau->professionnalisme = 6;
-    $newNiveau->id_Enseignant = 6;
-
-
-    $newNiveau->save();
-
-    foreach ($Competences as $each) {
-        $result[] = $each;
     }
         return response()->json(["message"=> $result],200);
     }

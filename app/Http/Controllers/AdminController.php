@@ -18,24 +18,29 @@ use App\Stage;
 
 class AdminController extends Controller
 {
-
-  public function  index(Request $request){
-
-    $Competences = Competences::all();
+  public function  StageManagement(Request $request){
+    #Type 1 pour l'ajout d'un stage
+ if ($request->type=1)
+ {
+    $Stage = Stage::all();
     $result = [];
+    Stage::AddStage(1,1,1,'aaa','bbb','ccc');
+    return response()->json(["message"=> $result],200); }
 
-    $newNiveau = new Competences;
-    $newNiveau->ethique = 2;
-    $newNiveau->gestionnaire = 3;
-    $newNiveau->organisation = 4;
-    $newNiveau->collaboration = 5;
-    $newNiveau->professionnalisme = 6;
-    $newNiveau->id_Enseignant = 6;
-    $newNiveau->save();
+#Type 2 pour l'ajout afficher liste stages
+    if ($request->type=2)
+    {
+       $Stage = Stage::all();
+       $result2 = array [stage];
+       $result2=Stage::ListStage();
+       return response()->json(["message"=> $result2],200); }
+    }
 
-    foreach ($Competences as $each) {
-        $result[] = $each;
-    }
-        return response()->json(["message"=> $result],200);
-    }
+#Type 3 pour modification d'un stage
+if ($request->type=2)
+{
+// still not done
+}
+
+
 }
