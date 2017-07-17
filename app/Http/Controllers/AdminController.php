@@ -35,12 +35,14 @@ class AdminController extends Controller
        $result2=Stage::ListStage();
        return response()->json(["message"=> $result2],200); }
     }
-
 #Type 3 pour modification d'un stage
 if ($request->type=2)
 {
 // still not done
 }
 
+
+
+}
 
 }

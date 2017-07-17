@@ -34,6 +34,15 @@ class EtudiantController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+     public function  ProfileManagement(Request $request )
+     {
+$login=request->login;
+$passwrd=request->passwrd;
+
+     }
+
     public function helloMetho(Request $request)
     {
 
@@ -43,7 +52,6 @@ class EtudiantController extends Controller
     }
 
   public function  index(Request $request){
-
 
     }
         return response()->json(["message"=> $result],200);
