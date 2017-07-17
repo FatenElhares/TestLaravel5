@@ -16,8 +16,8 @@ class MigrationStage extends Migration
         Schema::create('Stage', function (Blueprint $table) {
             $table->increments('id_Stage');
             $table->string('note',100);
-           $table->string('Date debut', 100);
-            $table->string('Date fin', 100);
+           $table->string('Datedebut', 100);
+            $table->string('Datefin', 100);
 
 
 

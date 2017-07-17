@@ -16,6 +16,7 @@ class MigrationNiveau extends Migration
         Schema::create('Niveau', function (Blueprint $table) {
             $table->increments('id_Niveau');
             $table->string('nom', 100);
+            
         });
     }
 
