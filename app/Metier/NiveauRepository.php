@@ -1,15 +1,6 @@
 <?php
 
-/**
- * Created by IntelliJ IDEA.
- * User: Abbes
- * Date: 29/07/2017
- * Time: 12:03
- */
-
 namespace App\Metier;
-
-
 use App\Models\Niveau;
 
 class NiveauRepository extends ResourceRepository

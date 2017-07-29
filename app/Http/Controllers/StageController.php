@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Abbes
- * Date: 29/07/2017
- * Time: 12:00
- */
 
 namespace App\Http\Controllers;
-
 
 use App\Metier\EnseignantRepository;
 use App\Metier\HopitalRepository;

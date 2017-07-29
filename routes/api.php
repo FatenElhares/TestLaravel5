@@ -38,3 +38,14 @@ Route::group(['prefix' => 'etudiant'], function () {
     Route::delete("/{etudiantId}", "EtudiantController@deleteEtudiant");
 
 });
+
+
+Route::group(['prefix' => 'competences'], function () {
+
+    Route::get("/", "CompetencesController@getAllCompetences");
+    Route::get("/{competencesId}", "CompetencesController@getCompetencesById");
+    Route::post("/add", "CompetencesController@addCompetences");
+    Route::put("/{competencesId}", "CompetencesController@updateCompetences");
+    Route::delete("/{competencesId}", "CompetencesController@deleteCompetences");
+
+});
