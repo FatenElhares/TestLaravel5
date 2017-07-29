@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,14 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix' => 'stage'], function () {
+
+    Route::get("/", "StageController@getAllStage");
+    Route::get("/{stageId}", "StageController@getStageById");
+    Route::post("/add", "StageController@addStage");
+    Route::put("/{stageId}", "StageController@updateStage");
+    Route::delete("/{stageId}", "StageController@deleteStage");
+
 });

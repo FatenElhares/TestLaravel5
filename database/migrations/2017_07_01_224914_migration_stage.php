@@ -15,10 +15,9 @@ class MigrationStage extends Migration
     {
         Schema::create('Stage', function (Blueprint $table) {
             $table->increments('id_Stage');
-            $table->string('note',100);
-           $table->string('Datedebut', 100);
-            $table->string('Datefin', 100);
 
+            $table->date('date_debut');
+            $table->date('date_fin');
 
 
             $table->integer('id_Hopital')->unsigned();
@@ -28,13 +27,8 @@ class MigrationStage extends Migration
             $table->integer('id_Service')->unsigned();
             $table->foreign('id_Service')->references('id_Service')->on('Service');
 
-
-            $table->integer('id_Etudiant')->unsigned();
-           $table->foreign('id_Etudiant')->references('id_Etudiant')->on('Etudiant');
-
-
-          $table->integer('id_Enseignant')->unsigned();
-          $table->foreign('id_Enseignant')->references('id_Enseignant')->on('Enseignant');
+            $table->integer('id_Enseignant')->unsigned();
+            $table->foreign('id_Enseignant')->references('id_Enseignant')->on('Enseignant');
 
 
         });
@@ -49,11 +43,9 @@ class MigrationStage extends Migration
     {
         Schema::table('Stage', function (Blueprint $table) {
 
-           $table->dropForeign('Stage_id_Hopital_foreign');
-           $table->dropForeign('Stage_id_Service_foreign');
-
-          $table->dropForeign('Stage_id_Etudiant_foreign');
-          $table->dropForeign('Stage_id_Enseignant_foreign');
+            $table->dropForeign('Stage_id_Hopital_foreign');
+            $table->dropForeign('Stage_id_Service_foreign');
+            $table->dropForeign('Stage_id_Enseignant_foreign');
         });
         Schema::drop('Stage');
     }
