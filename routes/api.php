@@ -29,9 +29,6 @@ Route::group(['prefix' => 'stage'], function () {
 
 });
 
-
-
-
 Route::group(['prefix' => 'etudiant'], function () {
 
     Route::get("/", "EtudiantController@getAllEtudiant");

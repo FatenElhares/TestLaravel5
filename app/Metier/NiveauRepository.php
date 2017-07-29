@@ -10,8 +10,7 @@
 namespace App\Metier;
 
 
-use App\Models\Enseignant;
-use App\Models\Hopital;
+use App\Models\Niveau;
 
 class NiveauRepository extends ResourceRepository
 {

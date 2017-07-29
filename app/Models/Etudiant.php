@@ -9,9 +9,8 @@ class Etudiant extends Model
     protected $table = 'Etudiant';
     protected $primaryKey = 'id_Etudiant';
 
-    protected $fillable = ['nom', 'prenom', 'CIN', 'carte_Etudiant', 'email', 'active', 'confirmation_code', 'qr_code'];
-    protected $niveau = 'id_Niveau';
-    protected $competences = 'id_Competences';
+    protected $fillable = ['id_Niveau','id_Competences','nom', 'prenom', 'CIN', 'carte_Etudiant', 'email', 'active', 'confirmation_code', 'qr_code'];
+
 
     public $timestamps = false;
 

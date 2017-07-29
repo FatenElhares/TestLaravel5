@@ -4,10 +4,9 @@
 namespace App\Http\Controllers;
 
 
-use App\Metier\EnseignantRepository;
-use App\Metier\HopitalRepository;
-use App\Metier\ServiceRepository;
-use App\Metier\StageRepository;
+use App\Metier\EtudiantRepository;
+use App\Metier\NiveauRepository;
+use App\Metier\CompetencesRepository;
 use Illuminate\Http\Request;
 
 
