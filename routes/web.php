@@ -15,8 +15,19 @@
 //Route::get('/helloworld', function () {
 //    return view('helloworld');
 //});
-Route::get('/helloworld', 'HelloworldController@index');
-Route::get('/Administrateurcreatestage', 'Administrateur@createstage');
-Route::get('/AdminController', 'AdminController@StageManagement');
+
+
+//Administrateur
+Route::get('/AdminController1', 'AdminController@StageManagement');
+Route::get('/AdminController2', 'AdminController@HopitalManagement');
+Route::get('/AdminController3', 'AdminController@EtudiantManagement');
+Route::get('/AdminController4', 'AdminController@EnseignantManagement');
+
+// Enseignant
 Route::get('/EnseigController', 'EnseigController@StageManagement');
 Route::get('/EnseigController', 'EnseigController@CompetancesManagement');
+
+//Just for TESSSSSSSSST
+
+
+Route::get('/TestController', 'TestController@test');

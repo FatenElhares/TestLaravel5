@@ -30,6 +30,20 @@ $newObj->save();
 
 }
 
+public static function getCompetencesById($id) {
+  return DB::table('Competences')
+          ->select('Competences.*')
+          ->where('id_Competences',$id)
+          ->first();
+}
+
+#pour evaluer ou faire des stat
+public static function ListeCompetences() {
+  return DB::table('Competences')
+          ->select('Competences.*')
+          ->get();
+}
+
 
 
 }

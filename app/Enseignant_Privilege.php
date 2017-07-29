@@ -24,6 +24,19 @@ class Enseignant_Privilege extends Model
   $newObj->enseignant = $enseignant;
   $newObj->privilege = $privilege;
   $newObj->save();
+  }
 
+  public static function getEnseigPriveById($id) {
+    return DB::table('Enseignant_Privilege')
+            ->select('Enseignant_Privilege.*')
+            ->where('id_Enseignant_Privilege',$id)
+            ->first();
+  }
+
+  #pour evaluer ou faire des stat
+  public static function ListeEnseignantPrivilege () {
+    return DB::table('Enseignant_Privilege')
+            ->select('Enseignant_Privilege.*')
+            ->get();
   }
 }

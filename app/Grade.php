@@ -23,6 +23,23 @@ class Grade extends Model
 
   $newObj->save();
 
+  return $newObj;
+
   }
+
+  public static function getGradeById($id) {
+    return DB::table('Grade')
+            ->select('Grade.*')
+            ->where('id_Grade',$id)
+            ->first();
+  }
+
+  #pour evaluer ou faire des stat
+  public static function ListeGrade () {
+    return DB::table('Grade')
+            ->select('Grade.*')
+            ->get();
+  }
+
 
 }

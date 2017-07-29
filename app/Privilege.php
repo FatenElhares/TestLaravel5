@@ -24,4 +24,19 @@ class Privilege extends Model
 
       }
 
+
+      public static function getPrivilegeById($id) {
+        return DB::table('Privilege')
+                ->select('Privilege.*')
+                ->where('id_Privilege',$id)
+                ->first();
+      }
+
+      #pour evaluer ou faire des stat
+      public static function ListePrivilege () {
+        return DB::table('Privilege')
+                ->select('Privilege.*')
+                ->get();
+      }
+
 }

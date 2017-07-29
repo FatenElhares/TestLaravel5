@@ -10,42 +10,29 @@ class Stage extends Model
   protected $primaryKey = 'id_Stage';
 
 
-  protected $hopital = 'id_Hopital';
-  protected $service = 'id_Service';
-  protected $etudiant = 'id_Etudiant';
-  protected $enseignant = 'id_Enseignant';
-
-  protected $fillable = ['note','Datedebut', 'Datefin'];
+  protected $fillable = ['note','Datedebut', 'Datefin','id_Etudiant','id_Enseignant','id_Hopital','id_Service'];
 
   public $timestamps = false;
 
 
-  public static function AddStage($hopital,$service,$etudiant,$enseignant,$note, $Datedebut, $Datefin)
+  public static function AddStage($id_Hopital,$id_Service,$id_Etudiant,$id_Enseignant,$note, $Datedebut, $Datefin)
   {
-
+#
   $newObj = new Stage;
-  $newObj->hopital = $hopital;
-    $newObj->service = $service;
-      $newObj->etudiant = $etudiant;
-        $newObj->enseignant = $enseignant;
+  $newObj->id_Hopital =$id_Hopital;
+    $newObj->id_Service = $id_Service;
+      $newObj->id_Etudiant = $id_Etudiant;
+        $newObj->id_Enseignant = $id_Enseignant;
           $newObj->note = $note;
             $newObj->Datedebut = $Datedebut;
               $newObj->Datefin = $Datefin;
 
-  $newObj->save();
+ $newObj->save();
 
   }
 
 
-  public static function DonnerNote($id, $note)
-  {
-  $Obj = new Stage;
-  $Obj = getStageById($id)
-  $Obj->note=$note;
-
-  $newObj->save();
-
-  }
+#  public static function DonnerNote($id, $note)  {  $Obj = new Stage;  $Obj = getStageById($id);  $Obj->note=$note;$newObj->save();}
 
   public function Donnernote($id , $note) {
   #  $stage = Stage::find($id);
@@ -73,6 +60,18 @@ public static function ListeStage($id) {
     return DB::table('Stage')
             ->select('Stage.*')
             ->get();
+}
+
+
+public static function destroy($id){
+
+   #$report = $delete;
+
+   $rsltDelRec = Stage::find($id);
+   $rsltDelRec->delete();
+   $request->session()->flash('alert-success', ' Stage is deleted successfully.');
+
+  # return redirect()->route('admin.flags');
 }
 
 }

@@ -35,4 +35,19 @@ class Etudiant extends Model
   $newObj->save();
 
   }
+
+  public static function getEtudiantById($id) {
+    return DB::table('Etudiant')
+            ->select('Etudiant.*')
+            ->where('id_Etudiant',$id)
+            ->first();
+  }
+
+  #pour evaluer ou faire des stat
+  public static function ListeEtudiant () {
+    return DB::table('Etudiant')
+            ->select('Etudiant.*')
+            ->get();
+  }
+
 }

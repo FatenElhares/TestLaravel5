@@ -61,4 +61,10 @@ class EnseigController extends Controller
         }
             return response()->json(["message"=> $result],200);
         }
+
+
+        public function  PtofilManagement(Request $request){
+
+      
+          }
 }

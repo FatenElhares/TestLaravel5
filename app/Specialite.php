@@ -23,4 +23,19 @@ class Specialite extends Model
   $newObj->save();
 
   }
+
+  public static function getServiceById($id) {
+    return DB::table('Specialite')
+            ->select('Specialite.*')
+            ->where('id_Specialite',$id)
+            ->first();
+  }
+
+  #pour evaluer ou faire des stat
+  public static function ListeService () {
+    return DB::table('Specialite')
+            ->select('Specialite.*')
+            ->get();
+  }
+
 }

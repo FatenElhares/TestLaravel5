@@ -23,6 +23,25 @@ class Hopital extends Model
 
   $newObj->save();
 
+  return $newObj;
+
   }
 
-}
+  public function getHopitalById($id) {
+
+       $test = [];
+       $test[1] = $this->Hopital->id_Hopital;
+       return $test;
+
+
+
+  }
+
+  #pour evaluer ou faire des stat
+  public static function ListeHopital () {
+    return DB::table('Hopital')
+            ->select('Hopital.*')
+            ->get();
+
+
+}}

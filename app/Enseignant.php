@@ -36,6 +36,22 @@ class Enseignant extends Model
   $newObj->qr_code = $qr_code;
   $newObj->nom = $nom;
   $newObj->save();
-
   }
+
+
+
+    public static function getEnseignantById($id) {
+      return DB::table('Enseignant')
+              ->select('Enseignant.*')
+              ->where('id_Enseignant',$id)
+              ->first();
+    }
+
+    #pour evaluer ou faire des stat
+    public static function ListeEnseignant () {
+      return DB::table('Enseignant')
+              ->select('Enseignant.*')
+              ->get();
+    }
+
 }
