@@ -20,37 +20,8 @@ class Enseignant extends Model
     public $timestamps = false;
 
 
-    public static function AddEnseignant($grade, $specialite, $login, $password, $CIN, $nom, $prenom, $passwordDecrypt, $qr_code)
-    {
-
-        $newObj = new Enseignant;
-        $newObj->grade = $grade;
-        $newObj->specialite = $specialite;
-        $newObj->login = $login;
-        $newObj->password = $password;
-        $newObj->CIN = $CIN;
-        $newObj->prenom = $prenom;
-        $newObj->passwordDecrypt = $passwordDecrypt;
-        $newObj->qr_code = $qr_code;
-        $newObj->nom = $nom;
-        $newObj->save();
-    }
 
 
-    public static function getEnseignantById($id)
-    {
-        return DB::table('Enseignant')
-            ->select('Enseignant.*')
-            ->where('id_Enseignant', $id)
-            ->first();
-    }
-
-    #pour evaluer ou faire des stat
-    public static function ListeEnseignant()
-    {
-        return DB::table('Enseignant')
-            ->select('Enseignant.*')
-            ->get();
-    }
+  
 
 }

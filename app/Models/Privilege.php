@@ -13,30 +13,4 @@ class Privilege extends Model
     public $timestamps = false;
 
 
-    public static function AddPrivilege($nom)
-    {
-
-        $newObj = new Privilege;
-        $newObj->nom = $nom;
-        $newObj->save();
-
-    }
-
-
-    public static function getPrivilegeById($id)
-    {
-        return DB::table('Privilege')
-            ->select('Privilege.*')
-            ->where('id_Privilege', $id)
-            ->first();
-    }
-
-    #pour evaluer ou faire des stat
-    public static function ListePrivilege()
-    {
-        return DB::table('Privilege')
-            ->select('Privilege.*')
-            ->get();
-    }
-
 }
