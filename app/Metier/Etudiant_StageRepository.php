@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by IntelliJ IDEA.
- * User: Abbes
- * Date: 29/07/2017
- * Time: 12:03
- */
 
 namespace App\Metier;
 
@@ -14,7 +8,7 @@ use App\Models\Etudiant_Stage;
 use App\Models\Etudiant;
 
 
-class EtudiantStageRepository extends ResourceRepository
+class Etudiant_StageRepository extends ResourceRepository
 {
 
 
@@ -49,7 +43,8 @@ class EtudiantStageRepository extends ResourceRepository
             ->delete();
     }
 
-    public function updateEtudiant_Stage($etudiant_stageId, $stageId, $etudiantId, $note)
+    public function
+
     {
         $etudiant_stage = Etudiant_Stage::find($etudiant_stageId);
 
