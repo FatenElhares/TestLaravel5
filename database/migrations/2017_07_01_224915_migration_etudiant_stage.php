@@ -17,6 +17,7 @@ class MigrationEtudiantStage extends Migration
             $table->increments('id_Etudiant_Stage');
 
             $table->string('note',100);
+            
             $table->integer('id_Stage')->unsigned();
             $table->foreign('id_Stage')->references('id_Stage')->on('Stage');
 
