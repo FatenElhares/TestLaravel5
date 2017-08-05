@@ -16,8 +16,11 @@ class MigrationEtudiantStage extends Migration
         Schema::create('Etudiant_Stage', function (Blueprint $table) {
             $table->increments('id_Etudiant_Stage');
 
+
             $table->string('note',100);
-            
+
+            $table->string('motif',100);
+
             $table->integer('id_Stage')->unsigned();
             $table->foreign('id_Stage')->references('id_Stage')->on('Stage');
 

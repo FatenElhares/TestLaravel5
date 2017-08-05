@@ -37,6 +37,16 @@ class StageController extends Controller
         return response()->json(["data" => $stages], 200);
     }
 
+    public function getAllStage_Enseignant($enseignantId, Request $request)
+    {
+         
+        if ($stagesEnseignant = $this->stageRepository->getAllStage_Enseignant($enseignantId)) {
+            return response()->json(["data" => $stagesEnseignant], 200);
+        } else {
+            return response()->json(["error" => "Not found"], 404);
+        }
+    }
+
     public function addStage(Request $request)
     {
         if (!$request->has([

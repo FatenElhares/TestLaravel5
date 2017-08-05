@@ -20,6 +20,17 @@ class StageRepository extends ResourceRepository
         $this->model = $session;
     }
 
+
+
+    public function getAllStage_Enseignant($enseignantId, Request $request)
+    {
+      return Stage::where("id_enseignant", "=", $enseignantId)
+        #  ->getAll();
+    }
+
+
+
+
     public function addStage($hopitalId, $serviceId, $enseignantId, $startDate, $endDate)
     {
         $stage = new Stage();

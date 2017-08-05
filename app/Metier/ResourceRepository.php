@@ -37,4 +37,11 @@ abstract class ResourceRepository
         return $this->model->all();
     }
 
+
+    public function getList($id)
+    {
+        return $this->model->find($id);
+    }
+
+
 }

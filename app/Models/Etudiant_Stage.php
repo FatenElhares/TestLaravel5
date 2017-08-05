@@ -15,7 +15,7 @@ class Etudiant_Stage
     protected $primaryKey = 'id_Etudiant_Stage';
 
 
-    protected $fillable = ["id_Stage", "id_Etudiant", "note"];
+    protected $fillable = ["id_Stage", "id_Etudiant", "note","motif"];
 
     public $timestamps = false;
 
