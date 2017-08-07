@@ -43,15 +43,46 @@ class Etudiant_StageController extends Controller
             }
     }
 ############################
-  #  public function AffecterListeEtudiant()
-  #  {
+    public function AffecterListeEtudiant($stageId,$etudiantId, $otheretudiantIds = null)
+    {
+      $note = "-1";
+      $motif = "en cours";
 
-  #          if ($liste = $this->etudiant_stageRepository->getAllEtudiant_StageTerminated()) {
-  #              return response()->json(["data" => $liste], 200);
-  #          } else {
-  #              return response()->json(["error" => "terminated stage not found"], 404);
-  #          }
-  #  }
+      if($otheretudiantIds)
+      {
+          $otheretudiantIds = explode('/', $otheretudiantIds);
+
+          foreach ($otheretudiantIds as $Id) {
+
+              if (!$this->stageRepository->isExistHopital($stageId)) {
+                return response()->json(["error" => "stage not found"], 404);
+              }
+              if (!$this->etudiantRepository->isExistService($Id)) {
+                  return response()->json(["error" => "etudiant not found"], 404);
+                }
+
+                if ($this->etudiant_stageRepository->addEtudiant_Stage($stageId, $Id, $note,$motif)) {
+                  return response()->json(["message" => "add etudiant_stage success"], 200);
+                    } else {
+                        return response()->json(["error" => "cannot add etudiant_stage"], 500);
+                        }
+             }
+      }
+
+      if (!$this->stageRepository->isExistHopital($stageId)) {
+          return response()->json(["error" => "stage not found"], 404);
+      }
+      if (!$this->etudiantRepository->isExistService($etudiantId)) {
+          return response()->json(["error" => "etudiant not found"], 404);
+      }
+
+      if ($this->etudiant_stageRepository->addEtudiant_Stage($stageId, $etudiantId, $note,$motif)) {
+          return response()->json(["message" => "add etudiant_stage success"], 200);
+      } else {
+          return response()->json(["error" => "cannot add etudiant_stage"], 500);
+      }
+
+   }
 ##############################
 
     public function getAllEtudiant($stageId, Request $request)
