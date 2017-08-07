@@ -3,9 +3,7 @@
 
 namespace App\Metier;
 
-use App\Models\Stage;
 use App\Models\Etudiant_Stage;
-use App\Models\Etudiant;
 
 
 class Etudiant_StageRepository extends ResourceRepository
@@ -30,7 +28,7 @@ class Etudiant_StageRepository extends ResourceRepository
 
     public function getAllEtudiant_StageTerminated()
     {
-        return Etudiant_Stage::where("note", "=", "admis") ;
+        return Etudiant_Stage::where("note", "!=", "en cours") ;
 
     }
 
@@ -38,14 +36,14 @@ class Etudiant_StageRepository extends ResourceRepository
 
 public function getAllEtudiant($stageId)
 {
-    return Etudiant_Stage::where("id_stage", "=", $stageId)
+    return Etudiant_Stage::where("id_stage", "=", $stageId)->get();
       #  ->getList($stageId);
 }
 
 
 public function getAllStages($etudiantId)
 {
-    return Etudiant_Stage::where("id_etudiant", "=", $etudiantId)
+    return Etudiant_Stage::where("id_etudiant", "=", $etudiantId)->get();
         #  ->getList($etudiantId);
 }
 

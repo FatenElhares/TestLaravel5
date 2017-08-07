@@ -24,7 +24,7 @@ class StageRepository extends ResourceRepository
 
     public function getAllStage_Enseignant($enseignantId, Request $request)
     {
-      return Stage::where("id_enseignant", "=", $enseignantId)
+      return Stage::where("id_enseignant", "=", $enseignantId)->get();
         #  ->getAll();
     }
 

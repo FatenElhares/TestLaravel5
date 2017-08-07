@@ -28,11 +28,10 @@ class Etudiant_StageController extends Controller
 
     public function getAllEtudiant_Stage()
     {
-        $stages = $this->etudiant_stageRepository->getAll();
+        $etudiantsstages =$this->etudiant_stageRepository->getAll();
 
-        return response()->json(["data" => $stages], 200);
+        return response()->json(["data" => $etudiantsstages], 200);
     }
-
 
     public function getAllEtudiant_StageTerminated()
     {
@@ -43,7 +42,17 @@ class Etudiant_StageController extends Controller
                 return response()->json(["error" => "terminated stage not found"], 404);
             }
     }
+############################
+  #  public function AffecterListeEtudiant()
+  #  {
 
+  #          if ($liste = $this->etudiant_stageRepository->getAllEtudiant_StageTerminated()) {
+  #              return response()->json(["data" => $liste], 200);
+  #          } else {
+  #              return response()->json(["error" => "terminated stage not found"], 404);
+  #          }
+  #  }
+##############################
 
     public function getAllEtudiant($stageId, Request $request)
     {

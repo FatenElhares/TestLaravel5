@@ -1,17 +1,13 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Abbes
- * Date: 29/07/2017
- * Time: 12:58
- */
+
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 
-class Etudiant_Stage
+class Etudiant_Stage extends Model
 {
-    protected $table = 'Stage';
+    protected $table ='Etudiant_Stage';
     protected $primaryKey = 'id_Etudiant_Stage';
 
 

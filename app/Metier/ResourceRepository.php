@@ -38,10 +38,4 @@ abstract class ResourceRepository
     }
 
 
-    public function getList($id)
-    {
-        return $this->model->find($id);
-    }
-
-
 }

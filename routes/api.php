@@ -59,6 +59,7 @@ Route::group(['prefix' => 'competences'], function () {
 
 Route::group(['prefix' => 'etudiant_stage'], function () {
     Route::get("/", "Etudiant_StageController@getAllEtudiant_Stage");
+    
     Route::get("/terminated", "Etudiant_StageController@getAllEtudiant_StageTerminated");
     Route::get("/{etudiant_stageId}", "Etudiant_StageController@getEtudiant_StageById");
     Route::get("/{stageId}", "Etudiant_StageController@getAllEtudiant");
