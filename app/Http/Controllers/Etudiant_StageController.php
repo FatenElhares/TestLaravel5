@@ -106,6 +106,10 @@ class Etudiant_StageController extends Controller
             return response()->json(["error" => "Bad Request"], 400);
         }
 
+        if (($request->note=="refusé")&&($request->motif!=Null)) {
+            return response()->json(["error" => "incomplete request"], 400);
+        }
+
         $stageId = $request->input("stageId");
         $etudiantId = $request->input("etudiantId");
         $note = $request->input("note");
@@ -117,6 +121,7 @@ class Etudiant_StageController extends Controller
         if (!$this->etudiantRepository->isExistEtudiant($etudiantId)) {
             return response()->json(["error" => "etudiant not found"], 404);
         }
+
 
         if ($this->etudiant_stageRepository->addEtudiant_Stage($stageId, $etudiantId, $note,$motif)) {
             return response()->json(["message" => "add etudiant_stage success"], 200);
