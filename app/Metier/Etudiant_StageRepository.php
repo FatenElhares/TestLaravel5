@@ -26,11 +26,7 @@ class Etudiant_StageRepository extends ResourceRepository
     }
 
 
-    public function getAllEtudiant_StageTerminated()
-    {
-        return Etudiant_Stage::where("note", "!=", "en cours") ;
-
-    }
+  
 
 
 

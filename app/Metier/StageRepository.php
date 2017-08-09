@@ -44,6 +44,14 @@ class StageRepository extends ResourceRepository
         return $stage->save();
     }
 
+
+    public function getAllStageTerminated()
+    {
+        return Stage::where("date_fin", '<=', new DateTime('today')) ;
+
+    }
+
+
     public function isExistStage($stageId)
     {
         return Stage::where("id_Stage", "=", $stageId)

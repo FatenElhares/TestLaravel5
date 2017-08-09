@@ -33,54 +33,41 @@ class Etudiant_StageController extends Controller
         return response()->json(["data" => $etudiantsstages], 200);
     }
 
-    public function getAllEtudiant_StageTerminated()
-    {
 
-            if ($liste = $this->etudiant_stageRepository->getAllEtudiant_StageTerminated()) {
-                return response()->json(["data" => $liste], 200);
-            } else {
-                return response()->json(["error" => "terminated stage not found"], 404);
-            }
-    }
 ############################
-    public function AffecterListeEtudiant($stageId,$etudiantId, $otheretudiantIds = null)
+    public function AffecterListeEtudiant(Request $request)
     {
-      $note = "-1";
-      $motif = "en cours";
 
-      if($otheretudiantIds)
-      {
-          $otheretudiantIds = explode('/', $otheretudiantIds);
+  #  if (!$request->has([
+  #      "stageId",
+  #      "etudiantIds",
+  #      "note",
+  #      "motif"
+  #  ])
+  #  ) {
+  #      return response()->json(["error" => "Bad Request"], 400);
+  #  }
 
-          foreach ($otheretudiantIds as $Id) {
+    $stageId = $request->input("stageId");
+    $etudiantIds = $request->except(['stageId']);
+    $note = "-1";
+    $motif = "";
 
-              if (!$this->stageRepository->isExistHopital($stageId)) {
+          foreach ($etudiantIds as $etudiantId) {
+
+            if (!$this->stageRepository->isExistStage($stageId)) {
                 return response()->json(["error" => "stage not found"], 404);
-              }
-              if (!$this->etudiantRepository->isExistService($Id)) {
-                  return response()->json(["error" => "etudiant not found"], 404);
-                }
+            }
+            if (!$this->etudiantRepository->isExistEtudiant($etudiantId)) {
+                return response()->json(["error" => "etudiant not found"], 404);
+            }
 
-                if ($this->etudiant_stageRepository->addEtudiant_Stage($stageId, $Id, $note,$motif)) {
-                  return response()->json(["message" => "add etudiant_stage success"], 200);
-                    } else {
-                        return response()->json(["error" => "cannot add etudiant_stage"], 500);
-                        }
-             }
-      }
-
-      if (!$this->stageRepository->isExistHopital($stageId)) {
-          return response()->json(["error" => "stage not found"], 404);
-      }
-      if (!$this->etudiantRepository->isExistService($etudiantId)) {
-          return response()->json(["error" => "etudiant not found"], 404);
-      }
-
-      if ($this->etudiant_stageRepository->addEtudiant_Stage($stageId, $etudiantId, $note,$motif)) {
-          return response()->json(["message" => "add etudiant_stage success"], 200);
-      } else {
-          return response()->json(["error" => "cannot add etudiant_stage"], 500);
-      }
+            if ($this->etudiant_stageRepository->addEtudiant_Stage($stageId, $etudiantId, $note,$motif)) {
+                return response()->json(["message" => "add etudiant_stage success"], 200);
+            } else {
+                return response()->json(["error" => "cannot add this etudiant_stage"], 500);
+            }
+        }
 
    }
 ##############################
@@ -96,7 +83,7 @@ class Etudiant_StageController extends Controller
     }
 
 
-    public function getAllStages($etudiantId, Request $request)
+    public function getAllStages($etudiantId)
     {
 
             if ($listeStages = $this->etudiant_stageRepository->getAllStages($etudiantId)) {
@@ -124,10 +111,10 @@ class Etudiant_StageController extends Controller
         $note = $request->input("note");
         $motif = $request->input("motif");
 
-        if (!$this->stageRepository->isExistHopital($stageId)) {
+        if (!$this->stageRepository->isExistStage($stageId)) {
             return response()->json(["error" => "stage not found"], 404);
         }
-        if (!$this->etudiantRepository->isExistService($etudiantId)) {
+        if (!$this->etudiantRepository->isExistEtudiant($etudiantId)) {
             return response()->json(["error" => "etudiant not found"], 404);
         }
 
@@ -144,7 +131,8 @@ class Etudiant_StageController extends Controller
         if (!$request->has([
           "stageId",
           "etudiantId",
-          "note"
+          "note",
+          "motif"
         ])
         ) {
             return response()->json(["error" => "Bad Request"], 400);
@@ -154,13 +142,13 @@ class Etudiant_StageController extends Controller
         $note = $request->input("note");
         $motif = $request->input("motif");
 
-        if (!$this->stageRepository->isExistHopital($stageId)) {
+        if (!$this->stageRepository->isExistStage($stageId)) {
             return response()->json(["error" => "stage not found"], 404);
         }
-        if (!$this->etudiantRepository->isExistService($etudiantId)) {
+        if (!$this->etudiantRepository->isExistEtudiant($etudiantId)) {
             return response()->json(["error" => "etudiant not found"], 404);
         }
-        if (!$this->etudiant_stageRepository->isExistStage($etudiant_stageId)) {
+        if (!$this->etudiant_stageRepository->isExistEtudiant_Stage($etudiant_stageId)) {
             return response()->json(["error" => "etudiant_stage not found"], 404);
         }
 

@@ -15,4 +15,10 @@ class Etudiant_Stage extends Model
 
     public $timestamps = false;
 
+
+    public function etudiant()
+    {
+        return $this->belongsTo('App\Models\Etudiant');
+    }
+  
 }

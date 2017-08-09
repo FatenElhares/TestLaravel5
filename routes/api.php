@@ -21,8 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'stage'], function () {
 
-
-
+  Route::get("/terminated", "StageController@getAllStageTerminated");
 
     Route::get("/", "StageController@getAllStage");
 
@@ -60,7 +59,6 @@ Route::group(['prefix' => 'competences'], function () {
 Route::group(['prefix' => 'etudiant_stage'], function () {
     Route::get("/", "Etudiant_StageController@getAllEtudiant_Stage");
 
-    Route::get("/terminated", "Etudiant_StageController@getAllEtudiant_StageTerminated");
     Route::get("/{etudiant_stageId}", "Etudiant_StageController@getEtudiant_StageById");
     Route::get("/{stageId}", "Etudiant_StageController@getAllEtudiant");
       Route::get("/{etudiantId}", "Etudiant_StageController@getAllStages");
@@ -69,7 +67,9 @@ Route::group(['prefix' => 'etudiant_stage'], function () {
     Route::delete("/{etudiant_stageId}", "Etudiant_StageController@deleteEtudiant_Stage");
 
 
-Route::get('/{stageId}/{etudiantId}/{otheretudiantIds?}', 'Etudiant_StageController@AffecterListeEtudiant')->where('otheretudiantIds', '(.*)');
+#Route::get('/{stageId}/{etudiantId}/{otheretudiantIds?}', 'Etudiant_StageController@AffecterListeEtudiant')->where('otheretudiantIds', '(.*)');
+#Route::post('/affecterstage/{Etudiant_Id}', ['as' => 'AffecterListeEtudiant', 'uses' => 'Etudiant_StageController@AffecterListeEtudiant']);
 
+Route::post('/affecterstage','Etudiant_StageController@AffecterListeEtudiant');
 
 });
