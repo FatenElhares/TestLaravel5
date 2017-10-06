@@ -15,7 +15,7 @@ class ApiServiceProvider extends ServiceProvider
 	 * @var bool
 	 */
 	protected $defer = false;
-	
+
 	/**
 	 * Bootstrap the application events.
 	 *
@@ -26,7 +26,7 @@ class ApiServiceProvider extends ServiceProvider
 		$this->bootAuthResourceOwner();
 		$this->bootFilters();
 	}
-	
+
 	/**
 	 * Register the service provider.
 	 *
@@ -36,20 +36,20 @@ class ApiServiceProvider extends ServiceProvider
 	{
 		$this->app->register('LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider');
 		$this->app->register('LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider');
-		
+
 		$config_path = __DIR__.'/../../config/api.php';
 		$this->mergeConfigFrom($config_path, 'api');
 		$this->publishes([
 			$config_path => config_path('api.php')
 		], 'config');
-		
+
 		$m_from = __DIR__ . '/../../migrations/';
 		$m_to = $this->app['path.database'] . '/migrations/';
 		$this->publishes([
 			$m_from.'2015_05_30_000000_oauth_server.php' => $m_to.'2015_05_30_000000_oauth_server.php',
 		], 'migrations');
 	}
-	
+
 	/**
 	 * Get the services provided by the provider.
 	 *
@@ -59,7 +59,7 @@ class ApiServiceProvider extends ServiceProvider
 	{
 		return array();
 	}
-	
+
 	/**
 	 * Make the current resource owner (access_token or Authorization header)
 	 * the current authenticated user in Laravel.
@@ -77,7 +77,7 @@ class ApiServiceProvider extends ServiceProvider
 			}
 		}
 	}
-	
+
 	/**
 	 * Add route filters.
 	 *
@@ -91,10 +91,11 @@ class ApiServiceProvider extends ServiceProvider
 					$response = Response::make(null, 204);
 					Cors::attachHeaders($response);
 					Cors::attachOriginHeader($response, Request::header('Origin'));
+					
 					return $response;
 				}
 			});
-			
+
 			$this->app['router']->after(function ($request, $response) {
 				if (Request::header('Origin')) {
 					Cors::attachHeaders($response);
@@ -102,15 +103,15 @@ class ApiServiceProvider extends ServiceProvider
 				}
 			});
 		}
-		
+
 		$this->app['router']->filter('protect', function ($route, $request) {
 			Api::protect();
 		});
-		
+
 		$this->app['router']->filter('checkscope', function ($route, $request, $scope = '') {
 			// B/c Laravel uses : as a special character already.
 			$scope = str_replace('.', ':', $scope);
-			
+
 			Api::checkScope($scope);
 		});
 	}

@@ -16,8 +16,8 @@ class MigrationStage extends Migration
         Schema::create('Stage', function (Blueprint $table) {
             $table->increments('id_Stage');
 
-            $table->date('date_debut');
-            $table->date('date_fin');
+            $table->string('date_debut');
+            $table->string('date_fin');
 
 
             $table->integer('id_Hopital')->unsigned();
