@@ -28,7 +28,12 @@ class EtudiantController extends Controller
     }
 
 
+    public function getAllEtudiant()
+    {
+        $etudiants = $this->etudiantRepository->getAll();
 
+        return response()->json(["data" => $etudiants], 200);
+    }
 
 
     public function getEtudiantById($etudiantId)
