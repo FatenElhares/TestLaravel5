@@ -34,6 +34,11 @@ Route::group(['prefix' => 'stage'], function () {
 
 });
 
+
+Route::group(['prefix' => 'enseignant'], function () {
+    Route::get("/", "EnseignantController@getAllEnseignant");
+});
+
 Route::group(['prefix' => 'etudiant'], function () {
 
     Route::get("/", "EtudiantController@getAllEtudiant");
