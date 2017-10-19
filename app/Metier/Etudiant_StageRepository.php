@@ -18,15 +18,15 @@ class Etudiant_StageRepository extends ResourceRepository
     {
         $etudiant_stage = new Etudiant_Stage();
 
-        $etudiant_stage->stageId = $stageId;
-        $etudiant_stage->etudiantId = $etudiantId;
+        $etudiant_stage->id_Stage = $stageId;
+        $etudiant_stage->id_Etudiant = $etudiantId;
         $etudiant_stage->note = $note;
          $etudiant_stage->motif = $motif;
         return $etudiant_stage->save();
     }
 
 
-  
+
 
 
 

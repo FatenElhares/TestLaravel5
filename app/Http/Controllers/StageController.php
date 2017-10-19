@@ -88,9 +88,9 @@ class StageController extends Controller
         if (!$this->enseignantRepository->isExistEnseignant($enseignantId)) {
             return response()->json(["error" => "enseigant not found"], 404);
         }
-
-        if ($this->stageRepository->addStage($hopitalId, $serviceId, $enseignantId, $startDate, $endDate)) {
-            return response()->json(["message" => "add stage success"], 200);
+        $stageId = $this->stageRepository->addStageAndReturnId($hopitalId, $serviceId, $enseignantId, $startDate, $endDate);
+        if ($stageId) {
+            return response()->json(["id" => $stageId], 200);
         } else {
             return response()->json(["error" => "cannot add stage"], 500);
         }
